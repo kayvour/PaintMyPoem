@@ -98,6 +98,7 @@ Done! Your poem has been visualized and saved as 'poem_art.png'.
 - Works best with short-to-medium length poems (4–12 lines).
 - Poetic imagery and emotion words improve output.
 - No internet required after initial dependency install.
+- Sample poems included in the /sample poems folder were generated using ChatGPT for demonstration purposes.
 
 ## 🔮 Future Improvements
 - Add style presets (e.g., minimal, vibrant, surreal) to change visual moods
