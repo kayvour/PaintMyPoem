@@ -1,52 +1,19 @@
-# Byte-compiled / optimized / DLL files
+# Bytecode and cache
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 
-# Distribution / packaging
-*.egg
-*.egg-info/
-dist/
-build/
-eggs/
-parts/
-var/
-sdist/
-wheels/
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# VS Code settings
-.vscode/
-
-# Jupyter Notebook checkpoints (if any)
-.ipynb_checkpoints
-
-# Python virtual environments
-venv/
+# Virtual environments (if ever added)
 env/
-ENV/
-env.bak/
-venv.bak/
+venv/
+*.env
 
-# OS-specific files
+# OS/system files
 .DS_Store
 Thumbs.db
 
-# Output images and generated files
-poem_art.png
-sample output/
+# Optional: logs or temp files
+*.log
+*.tmp
+
+# VS Code settings (optional)
+.vscode/
