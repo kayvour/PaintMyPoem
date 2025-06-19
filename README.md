@@ -4,6 +4,7 @@ A Python-based creative tool that transforms poems into abstract generative art 
 
 🎨 *Turn verses into visuals, words into wonder.*
 
+![poem_art](https://github.com/user-attachments/assets/60fdc8a4-0eb6-441e-894c-03a7712a3f51)
 ---
 
 ## 📝 What It Does
@@ -93,6 +94,13 @@ poems/rain_memory.txt
 
 Generating art...
 Done! Your poem has been visualized and saved as 'poem_art.png'.
+
+## 🧰 Built With
+- 🐍 Python 3
+- 🧠 Natural Language Toolkit (nltk)
+- 💬 TextBlob / VADER Sentiment Analysis
+- 🎮 pygame for art generation
+- 🖌️ Custom keyword-to-visual mapping logic
 
 ## 📌 Notes
 - Works best with short-to-medium length poems (4–12 lines).
