@@ -21,6 +21,9 @@ keywords = extract_keywords(poem)
 print(f"Extracted Keywords: {keywords}")
 
 visual_plan = map_to_visuals(emotion, keywords)
+print(f"Using palette: {visual_plan['palette']}")
 
+# ✅ Final draw call
 draw_art(visual_plan)
+
 print("\n✅ Visual poem saved as 'poem_art.png'")
