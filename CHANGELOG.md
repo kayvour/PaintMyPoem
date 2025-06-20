@@ -4,7 +4,7 @@ This changelog follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.
 
 ---
 
-## [1.1.0] – 2025-06-19
+## [0.1.1] – 2025-06-19
 
 ### Added
 - **CHANGELOG.md** - Project changelog following Keep a Changelog format
@@ -34,7 +34,7 @@ This changelog follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.
 
 ---
 
-## [1.0.0] – 2025-06-01
+## [0.1.0] – 2025-06-01
 
 ### Initial Release
 - **Poem Analysis Engine** - NLP-based emotion detection using TextBlob/VADER
