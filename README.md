@@ -1,8 +1,9 @@
-# PaintMyPoem 🖌️
+# PaintMyPoem
 
 A Python-based tool that transforms poems into abstract art using natural language processing and simple machine learning.
 
 ![poem_art](https://github.com/user-attachments/assets/60fdc8a4-0eb6-441e-894c-03a7712a3f51)
+(Sample Image generation)
 ---
 
 ## 📝 What It Does
@@ -64,10 +65,9 @@ python main.py
 - Optimize and test for longer poems.
 
 ## 🤝 Contributing
-Contributions are welcome! If you have suggestions, improvements, or bug fixes, please fork the repository and submit a pull request. For major changes, feel free to open an issue to discuss first.
+Contributions are welcome, feel free to fork the repository and submit a pull request. For major changes, open an issue to discuss first.
 
 ## 📄 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
