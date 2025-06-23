@@ -2,18 +2,24 @@ import random
 import pygame
 import math
 import os
+from background_manager import BackgroundManager
 
-def draw_art(visual_plan):
+def draw_art(visual_plan, background_type=None, background_opacity=0.4):
     pygame.init()
     screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("PaintMyPoem")
+    
+    # Initialize background manager
+    bg_manager = BackgroundManager()
 
     def draw_vibrant_gradient_background(screen, top_color, emotion):
         """Create more colorful gradient backgrounds"""
         # Create gradient variations based on emotion
         gradient_variants = {
             "joy": [(255, 248, 220), (255, 215, 0), (255, 165, 0)],
+            "happy": [(255, 248, 220), (255, 215, 0), (255, 165, 0)],  # Same as joy
             "sadness": [(25, 25, 112), (65, 105, 225), (30, 144, 255)],
+            "sad": [(25, 25, 112), (65, 105, 225), (30, 144, 255)],    # Same as sadness
             "anger": [(139, 0, 0), (255, 69, 0), (255, 140, 0)],
             "fear": [(72, 61, 139), (138, 43, 226), (147, 112, 219)],
             "love": [(255, 240, 245), (255, 20, 147), (255, 105, 180)],
@@ -96,10 +102,35 @@ def draw_art(visual_plan):
         # Blit the shape to the main screen
         screen.blit(shape_surface, (pos[0] - size, pos[1] - size))
 
-    # Draw vibrant background
+    # Handle background rendering
     emotion = visual_plan.get("emotion", "neutral")
-    bg_color = visual_plan.get("background_color", (47, 79, 79))
-    draw_vibrant_gradient_background(screen, bg_color, emotion)
+    
+    if background_type:
+        print(f"🌄 Adding {background_type} background with {background_opacity*100}% opacity...")
+        
+        # Get background image
+        bg_path = bg_manager.get_background_image(background_type)
+        if bg_path:
+            # Create background surface
+            bg_surface = bg_manager.prepare_background_surface(bg_path, background_opacity)
+            screen.blit(bg_surface, (0, 0))
+            
+            # Add subtle gradient overlay to blend with poem art
+            overlay = pygame.Surface((800, 800), pygame.SRCALPHA)
+            bg_color = visual_plan.get("background_color", (47, 79, 79))
+            # Create very subtle gradient overlay
+            for y in range(800):
+                alpha = int(30 * (1 - y/800))  # Fade from top to bottom
+                color = (*bg_color, alpha)
+                pygame.draw.line(overlay, color, (0, y), (800, y))
+            screen.blit(overlay, (0, 0))
+        else:
+            print("⚠️ Background image failed, using gradient fallback")
+            draw_vibrant_gradient_background(screen, visual_plan.get("background_color", (47, 79, 79)), emotion)
+    else:
+        # Draw vibrant gradient background (original behavior)
+        bg_color = visual_plan.get("background_color", (47, 79, 79))
+        draw_vibrant_gradient_background(screen, bg_color, emotion)
 
     # Get color palettes
     palette = visual_plan.get("palette", [(255, 255, 255)])
@@ -121,17 +152,25 @@ def draw_art(visual_plan):
         pygame.draw.circle(particle_surface, (*color, alpha), (radius, radius), radius)
         screen.blit(particle_surface, (x - radius, y - radius))
 
-    # Enhanced text rendering with better colors
+    # Enhanced text rendering with better contrast for backgrounds
     font = pygame.font.SysFont("Georgia", 28, bold=True)
     shadow_font = pygame.font.SysFont("Georgia", 28, bold=True)
     
+    # Create semi-transparent text background for better readability
+    text_bg = pygame.Surface((800, 100), pygame.SRCALPHA)
+    text_bg.fill((0, 0, 0, 100))  # Semi-transparent black
+    screen.blit(text_bg, (0, 700))
+    
     for i, word in enumerate(visual_plan.get("text", [])):
-        # Use vibrant colors for text
+        # Use vibrant colors for text but ensure contrast
         text_color = random.choice(palette)
+        
+        # Make text brighter for better visibility on backgrounds
+        enhanced_color = tuple(min(255, c + 50) for c in text_color)
         
         # Create text shadow for better readability
         shadow_text = shadow_font.render(word, True, (0, 0, 0))
-        main_text = font.render(word, True, text_color)
+        main_text = font.render(word, True, enhanced_color)
         
         x = 40 + (i % 4) * 180
         y = 720 + (i // 4) * 35
@@ -161,6 +200,9 @@ def draw_art(visual_plan):
     except Exception as e:
         print(f"❌ Failed to save image: {e}")
 
+    # Clean up old backgrounds to save space
+    bg_manager.cleanup_old_backgrounds()
+
     # Keep window open until user closes it
     running = True
     clock = pygame.time.Clock()
@@ -173,3 +215,9 @@ def draw_art(visual_plan):
 
     pygame.quit()
     
+    # Clean up temp files
+    temp_files = ["temp.png"]
+    for temp_file in temp_files:
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
+            
