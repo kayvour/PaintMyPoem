@@ -1,5 +1,7 @@
 # PaintMyPoem
 
+[![GitHub Release](https://img.shields.io/github/v/release/kayvour/PaintMyPoem?style=flat-square)](https://github.com/kayvour/PaintMyPoem/releases)
+
 A Python-based tool that transforms poems into abstract art using natural language processing and simple machine learning. Sample image below.
 
 ![poem_art](https://github.com/user-attachments/assets/60fdc8a4-0eb6-441e-894c-03a7712a3f51)
