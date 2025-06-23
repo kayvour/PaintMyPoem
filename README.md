@@ -1,6 +1,17 @@
 # PaintMyPoem
 
-[![GitHub Pre-Release](https://img.shields.io/github/v/release/kayvour/PaintMyPoem?include_prereleases&sort=semver&label=latest)](https://github.com/kayvour/PaintMyPoem/releases)
+<p align="center">
+  <a href="https://github.com/kayvour/PaintMyPoem/releases"><img src="https://img.shields.io/github/v/release/kayvour/PaintMyPoem?include_prereleases&sort=semver&style=flat-square&label=pre-release"></a>
+  <a href="https://github.com/kayvour/PaintMyPoem/commits"><img src="https://img.shields.io/github/last-commit/kayvour/PaintMyPoem?style=flat-square"></a>
+  <a href="https://github.com/kayvour/PaintMyPoem/issues"><img src="https://img.shields.io/github/issues/kayvour/PaintMyPoem?style=flat-square"></a>
+  <a href="https://github.com/kayvour/PaintMyPoem/blob/main/LICENSE"><img src="https://img.shields.io/github/license/kayvour/PaintMyPoem?style=flat-square"></a>
+  <img src="https://img.shields.io/badge/python-3.10+-blue?style=flat-square&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/status-pre--release-orange?style=flat-square">
+  <img src="https://img.shields.io/badge/theme-poetry🪷-ff69b4?style=flat-square">
+</p>
+
+---
+📄 Full changelog → [`CHANGELOG.md`](./CHANGELOG.md)
 
 A Python-based tool that transforms poems into abstract art using natural language processing and simple machine learning. Sample image below.
 
