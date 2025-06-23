@@ -1,48 +1,74 @@
-# Changelog
-All notable changes to this project will be documented in this file.
-This changelog follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+# 📖 Changelog
+_All notable changes will be documented here following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and [Semantic Versioning](https://semver.org/spec/v2.0.0.html)._
+
+---
+
+## [0.2.0] – 2025-06-23
+
+### Added
+- **BackgroundManager** with caching, downloads, and fallback gradients
+- **Unsplash API** for real nature backgrounds (sky, forest, ocean, etc.)
+- **Background variants**: original, soft, vibrant, vintage
+- **Post-processing**: smoothing and filters via PIL
+- **Blending modes** to merge artwork with backgrounds
+- **Social media optimization**: resizing & quality enhancement
+- **Emotion detection**: improved with "love" category + intensity scoring
+- **Theme-based visuals**: mood-based atmospheric adjustments
+- **Demo mode**: quick generation from sample poems
+- **Mood & theme analysis**: brightness, temperature, energy, keywords
+- **Dynamic opacity** for backgrounds based on emotional depth
+
+### Changed
+- **Keyword extraction**: better stop word filtering & visual word focus
+- **Text rendering**: semi-transparent backgrounds, improved readability
+- **Backgrounds**: support both gradient & image-based
+- **Art generation**: tighter background-foreground integration
+- **Color logic**: more contrast-aware and theme-aware visuals
+
+### Fixed
+- **Download failures**: fallback handling for backgrounds
+- **Text visibility**: shadows and overlays for better clarity
+- **Memory & file management**: cleanup of temp/old files
+- **Image pipeline**: robust post-processing error handling
 
 ---
 
 ## [0.1.1] – 2025-06-19
 
 ### Added
-- **CHANGELOG.md** - Project changelog following Keep a Changelog format
-- **Enhanced Color Palettes** - Expanded from 4 to 8 vibrant colors per emotion
-- **New Emotion Support** - Added dedicated "love" emotion with pink/red palette
-- **Additional Shape Types** - Added hexagon and star shapes for more visual variety
-- **Accent Color System** - Secondary color palettes for each emotion to increase variety
-- **Decorative Particles** - 30 small colorful accent dots scattered throughout artwork
-- **Shape Enhancement Effects** - Inner glows, borders, and transparency effects for depth
-- **Multi-Color Gradient Backgrounds** - 3-color gradients replace simple 2-color fades
+- `CHANGELOG.md` using Keep a Changelog format
+- **"Love" emotion support** with pink/red palettes
+- **Expanded color palettes**: 8 colors per emotion
+- **New shapes**: hexagon and star
+- **Accent system**: secondary emotion colors
+- **Decorative particles**: 30 color accent dots
+- **Shape effects**: glows, borders, transparency
+- **3-color gradient backgrounds**
 
 ### Changed
-- **Eliminated Grey Neutral Palette** - Replaced grey colors with vibrant blues, oranges, and purples
-- **Increased Color Saturation** - All color values boosted for more vivid, less muted appearance
-- **Enhanced Background Colors** - More colorful base backgrounds instead of dark/grey tones
-- **Improved Text Rendering** - Added text shadows and used vibrant colors for better readability
-- **Reduced Fog Effect** - Decreased from 60 to 15 particles with lower opacity (5-15 vs 15-35)
-- **Disabled Fog by Default** - Changed default fog setting to `False` to preserve color vibrancy
-- **Increased Minimum Elements** - Now generates at least 8 visual elements for richer composition
-- **Better Element Positioning** - Improved spacing to avoid text area overlap
+- **Neutral palette**: grey replaced with vibrant hues
+- **Color saturation**: boosted vibrancy overall
+- **Text rendering**: added shadows, vibrant font colors
+- **Fog**: reduced count, opacity, and disabled by default
+- **Visual richness**: minimum of 8 elements, better layout
 
 ### Fixed
-- **Dull/Greyscale Image Output** - Resolved primary issue causing washed-out, grey-toned artwork
-- **Color Washing from Fog** - Heavy fog effect no longer desaturates the overall image
-- **Limited Visual Variety** - More shapes, colors, and effects create more diverse artwork
-- **Poor Color Distribution** - Better balance between main palette and accent colors
+- **Grey/dull outputs**: resolved primary washout issue
+- **Fog desaturation**: no longer drains image color
+- **Visual variety**: more diverse shapes/effects
+- **Color balance**: improved main vs. accent distribution
 
 ---
 
 ## [0.1.0] – 2025-06-01
 
 ### Initial Release
-- **Poem Analysis Engine** - NLP-based emotion detection using TextBlob/VADER
-- **Keyword Extraction** - Automatic extraction of key themes and imagery words using NLTK
-- **Visual Mapping System** - Maps emotions and keywords to colors, shapes, and visual elements
-- **Pygame Art Generation** - Creates abstract artwork using geometric shapes and gradients
-- **Emotion-Based Color Palettes** - Joy, sadness, anger, fear, and neutral emotion support
-- **Shape Variety** - Circle, square, and triangle shape generation
-- **Text Integration** - Keywords displayed as text overlay on generated artwork
-- **Local Processing** - Completely offline operation with no external API dependencies
-- **Sample Content** - Included sample poems and output examples for demonstration
+- **Poem Analysis Engine** using TextBlob/VADER
+- **Keyword Extraction** via NLTK
+- **Visual Mapping** of emotions/keywords to visuals
+- **Pygame Artwork Generator** with shapes & gradients
+- **Emotion Color Palettes**: joy, sadness, anger, fear, neutral
+- **Shape types**: circle, square, triangle
+- **Text Overlay**: keywords shown on visuals
+- **Offline Support**: no external dependencies
+- **Sample Content**: poems + demo outputs
