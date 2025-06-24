@@ -4,6 +4,45 @@ This changelog follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.
 
 ---
 
+## [0.2.0] – 2025-06-23
+
+### Added
+- **BackgroundManager System** - Complete background image management with download and caching
+- **Real Background Images** - Integration with Unsplash API for nature backgrounds (sky, forest, ocean, mountains, sunset)
+- **Background Caching** - Local storage of downloaded backgrounds to reduce API calls
+- **Fallback Background Generation** - Automatic gradient backgrounds when downloads fail
+- **Post-Processing Effects** - Image smoothing and enhancement filters using PIL
+- **Multiple Image Variants** - Generate original, soft, vibrant, and vintage versions of artwork
+- **Background Blending** - Advanced blend modes for combining artwork with background images
+- **Social Media Optimization** - Automatic image resizing and optimization for sharing
+- **Enhanced Emotion Detection** - More sophisticated emotion mapping with love category support
+- **Emotion Intensity Analysis** - Intensity scoring to adjust visual effects dynamically
+- **Theme-Based Enhancement** - Atmospheric effects based on detected poem themes
+- **Interactive Demo Mode** - Sample poems with quick generation for demonstration
+- **Comprehensive Mood Analysis** - Raw sentiment scores and mood keyword extraction
+- **Background Opacity Control** - Dynamic opacity adjustment based on emotion intensity
+- **Visual Keywords Extraction** - Specialized keyword extraction for visual representation
+- **Theme Analysis System** - Detection of major themes (nature, love, time, journey, conflict)
+- **Mood Descriptors** - Extraction of brightness, temperature, and energy descriptors
+
+### Changed
+- **Enhanced Keyword Extraction** - Improved filtering with expanded stop words and visual word prioritization
+- **Background Integration** - Artwork now supports both gradient and photographic backgrounds
+- **Improved Text Rendering** - Semi-transparent background for better text readability over backgrounds
+- **Dynamic Background Selection** - Emotion-based background recommendations with user choice
+- **Enhanced Art Generation** - Better integration between background and foreground elements
+- **Expanded Visual Mapping** - Theme-aware visual element generation
+- **Improved Color Handling** - Better contrast and brightness adjustment for background compatibility
+
+### Fixed
+- **Background Download Reliability** - Proper error handling and fallback systems
+- **Memory Management** - Automatic cleanup of temporary and old background files
+- **Image Processing Stability** - Robust error handling in post-processing pipeline
+- **Text Visibility Issues** - Enhanced text rendering with shadows and background overlays
+- **File Management** - Better temporary file cleanup and organization
+
+---
+
 ## [0.1.1] – 2025-06-19
 
 ### Added
