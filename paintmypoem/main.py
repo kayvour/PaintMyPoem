@@ -6,6 +6,7 @@ from keyword_extractor import extract_keywords, extract_visual_keywords, analyze
 from visual_mapper import map_to_visuals
 from art_generator import draw_art
 from image_renderer import soften_image, create_image_variants
+from styles import get_style_menu, auto_select_style, StylePresets
 import random
 
 def main():
@@ -50,6 +51,15 @@ def main():
     recommended_bg = get_recommended_background_type(emotion)
     print(f"🌄 Recommended Background: {recommended_bg.title()}")
     
+    # NEW: Style Selection
+    style_choice = get_style_menu()
+    
+    if style_choice == "auto":
+        selected_style = auto_select_style(emotion, visual_keywords)
+        print(f"🤖 Auto-selected style: {selected_style.title()}")
+    else:
+        selected_style = style_choice
+    
     print("\n" + "="*50)
     print("🎨 CREATING YOUR ARTWORK...")
     print("="*50)
@@ -83,6 +93,11 @@ def main():
     # Generate visual plan
     visual_plan = map_to_visuals(emotion, visual_keywords)
     
+    # NEW: Apply selected style to the visual plan
+    style_manager = StylePresets()
+    visual_plan = style_manager.modify_visual_plan(visual_plan, selected_style)
+    print(f"✨ Applied {selected_style.title()} style")
+    
     # Add theme-based enhancements
     if theme_analysis['primary_theme'] == 'nature':
         visual_plan['fog'] = True  # Add atmospheric effect for nature themes
@@ -99,13 +114,13 @@ def main():
         create_variants = input("\nCreate multiple versions? (y/n): ").lower().strip() == 'y'
         
         if create_variants:
-            variants = create_image_variants(pygame_surface, 'poem_art')
+            variants = create_image_variants(pygame_surface, f'poem_art_{selected_style}')
             print(f"✅ Created {len(variants)} variants:")
             for name, path in variants:
                 print(f"   📸 {name}: {path}")
         else:
             # Just create the polished version
-            final_path = soften_image(pygame_surface, 'poem_art_final.png')
+            final_path = soften_image(pygame_surface, f'poem_art_{selected_style}_final.png')
             print(f"✅ Final artwork saved: {final_path}")
         
     except Exception as e:
@@ -115,10 +130,10 @@ def main():
     print("\n" + "="*50)
     print("🎉 ARTWORK COMPLETE!")
     print("="*50)
-    print("Your visual poem has been created and saved!")
+    print(f"Your visual poem has been created in {selected_style.title()} style!")
     print("Files generated:")
-    print("  📄 poem_art.png - Main artwork")
-    print("  ✨ poem_art_final.png - Polished version")
+    print(f"  📄 poem_art.png - Main artwork")
+    print(f"  ✨ poem_art_{selected_style}_final.png - Polished version")
     
     if create_variants:
         print("  🎨 Multiple variants in different styles")
@@ -168,14 +183,23 @@ def interactive_demo():
         # Continue with normal processing...
         emotion = detect_emotion(poem)
         visual_keywords = extract_visual_keywords(poem)
+        
+        # Auto-select style for demo
+        selected_style = auto_select_style(emotion, visual_keywords)
+        print(f"🤖 Auto-selected style for demo: {selected_style.title()}")
+        
         visual_plan = map_to_visuals(emotion, visual_keywords)
+        
+        # Apply style
+        style_manager = StylePresets()
+        visual_plan = style_manager.modify_visual_plan(visual_plan, selected_style)
         
         # Quick generation without user prompts for demo
         background_type = get_recommended_background_type(emotion)
         pygame_surface = draw_art(visual_plan, background_type, 0.4)
-        soften_image(pygame_surface, f"{selected_poem['title'].lower().replace(' ', '_')}_art.png")
+        soften_image(pygame_surface, f"{selected_poem['title'].lower().replace(' ', '_')}_{selected_style}_art.png")
         
-        print(f"✅ Demo artwork created for '{selected_poem['title']}'!")
+        print(f"✅ Demo artwork created for '{selected_poem['title']}' in {selected_style.title()} style!")
         
     elif choice == '4':
         main()  # Run normal interactive mode
