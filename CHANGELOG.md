@@ -3,33 +3,36 @@ _All notable changes will be documented here following the [Keep a Changelog](ht
 
 ---
 
-## [0.2.0] – 2025-06-23
+## [0.3.0] – 2025-08-03
 
 ### Added
-- **BackgroundManager** with caching, downloads, and fallback gradients
-- **Unsplash API** for real nature backgrounds (sky, forest, ocean, etc.)
-- **Background variants**: original, soft, vibrant, vintage
-- **Post-processing**: smoothing and filters via PIL
-- **Blending modes** to merge artwork with backgrounds
-- **Social media optimization**: resizing & quality enhancement
-- **Emotion detection**: improved with "love" category + intensity scoring
-- **Theme-based visuals**: mood-based atmospheric adjustments
-- **Demo mode**: quick generation from sample poems
-- **Mood & theme analysis**: brightness, temperature, energy, keywords
-- **Dynamic opacity** for backgrounds based on emotional depth
+- **🎨 Style Presets System** - Complete artistic style management with 5 predefined styles
+- **Vibrant Style** - Bold colors, high contrast, energetic feel with increased element count
+- **Minimalist Style** - Clean, simple shapes with limited color palette and reduced visual noise
+- **Ethereal Style** - Soft, dreamy aesthetic with transparent layers and flowing particles
+- **Bold Style** - High contrast geometric shapes with thick borders and strong visual impact
+- **Organic Style** - Natural, flowing shapes with earth-inspired colors and atmospheric effects
+- **Auto-Style Selection** - Intelligent style selection based on poem emotion and theme analysis
+- **Style-Specific Visual Effects** - Customized particle counts, gradient complexity, and shape preferences per style
+- **Dynamic Element Scaling** - Element count and sizing automatically adjusted based on selected style
+- **Enhanced Shape Rendering** - Style-aware shape drawing with borders, glows, and transparency effects
+- **Style Configuration System** - Extensible framework for adding new artistic styles
+- **Interactive Style Menu** - User-friendly style selection with descriptions and auto-select option
 
 ### Changed
-- **Keyword extraction**: better stop word filtering & visual word focus
-- **Text rendering**: semi-transparent backgrounds, improved readability
-- **Backgrounds**: support both gradient & image-based
-- **Art generation**: tighter background-foreground integration
-- **Color logic**: more contrast-aware and theme-aware visuals
+- **Main Interface** - Added comprehensive style selection workflow after poem analysis
+- **Art Generation Pipeline** - Integrated style modifications throughout the visual creation process
+- **Color Processing** - Style-specific saturation and intensity adjustments for palettes
+- **Text Rendering** - Style-aware font sizing and contrast adjustments
+- **Background Integration** - Style-specific gradient complexity and overlay effects
+- **File Naming** - Output files now include style name for better organization
+- **Demo Mode** - Auto-selects appropriate styles for sample poems
 
-### Fixed
-- **Download failures**: fallback handling for backgrounds
-- **Text visibility**: shadows and overlays for better clarity
-- **Memory & file management**: cleanup of temp/old files
-- **Image pipeline**: robust post-processing error handling
+### Enhanced
+- **Visual Variety** - Each style produces distinctly different artistic results from the same poem
+- **User Control** - Immediate visual customization without complex parameter adjustment
+- **Artistic Coherence** - Style presets ensure visually harmonious results
+- **Extensibility** - Easy framework for adding custom styles and modifications
 
 ---
 
