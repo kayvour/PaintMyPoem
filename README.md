@@ -21,7 +21,7 @@ A Python-based tool that transforms poems into abstract art using natural langua
 ## 📝 What It Does
 - Analyzes the **mood and tone** of the poem using NLP and sentiment analysis
 - Extracts **keywords** and emotional themes
-- **🎨 NEW: Choose from 5 artistic styles** - Vibrant, Minimalist, Ethereal, Bold, or Organic
+- **NEW: Choose from 5 artistic styles** - Vibrant, Minimalist, Ethereal, Bold, or Organic
 - Generates visual elements and color palettes to match the poem and selected style
 - Uses Unsplash API to add backgrounds (optional)
 - Creates abstract artwork using `pygame`, saves it as a `.png` image
@@ -37,12 +37,12 @@ A Python-based tool that transforms poems into abstract art using natural langua
 - Places visual elements (shapes, patterns, swirls) based on poem keywords
 
 ### 🎨 Artistic Styles *(NEW)*
-- **🌟 Vibrant**: Bold colors, high contrast, energetic feel
-- **🎯 Minimalist**: Clean, simple shapes with limited color palette  
-- **✨ Ethereal**: Soft, dreamy with transparent layers and flowing shapes
-- **💪 Bold**: High contrast, geometric shapes, strong visual impact
-- **🌿 Organic**: Natural, flowing shapes with earth-inspired colors
-- **🤖 Auto-select**: Automatically picks the best style based on poem emotion
+- **Vibrant**: Bold colors, high contrast, energetic feel
+- **Minimalist**: Clean, simple shapes with limited color palette  
+- **Ethereal**: Soft, dreamy with transparent layers and flowing shapes
+- **Bold**: High contrast, geometric shapes, strong visual impact
+- **Organic**: Natural, flowing shapes with earth-inspired colors
+- **Auto-select**: Automatically picks the best style based on poem emotion
 
 ### Visual Generation
 - Generates original, soft, vibrant, and vintage art variants
@@ -101,12 +101,12 @@ python main.py
 ---
 
 ## 🧰 Built With
-- 🐍 Python 3
-- 🧠 Natural Language Toolkit (nltk)
-- 💬 TextBlob / VADER Sentiment Analysis
-- 🎮 pygame for art generation
-- 🖼️ Unsplash API for background images
-- 🎨 Custom Style Presets System
+- Python 3
+- Natural Language Toolkit (nltk)
+- TextBlob / VADER Sentiment Analysis
+- pygame for art generation
+- Unsplash API for background images
+- Custom Style Presets System
 
 ---
 
@@ -120,7 +120,7 @@ python main.py
 ---
 
 ## 🔮 Future Improvements
-- ~~Add style presets~~ ✅ **COMPLETED**
+- ~~Add style presets~~ ✅
 - More detailed shape variations (fractals, splines, organic forms)
 - GUI version for drag-and-drop poem uploads
 - Custom style creator for advanced users
