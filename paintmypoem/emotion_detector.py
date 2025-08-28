@@ -1,30 +1,29 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-def detect_emotion(poem_text):
-    """
-    Detect emotion from poem text using VADER sentiment analysis.
+analyzer = SentimentIntensityAnalyzer()
+
+def detect_emotion(poem_text: str) -> str:
+    """Detect emotion from poem text using VADER sentiment analysis.
     Returns emotion keys that match visual_mapper expectations.
+    Args:
+        poem_text (str): Input poem text.
+    Returns:
+        str: Detected emotion (e.g., 'joy', 'sadness').
     """
-    analyzer = SentimentIntensityAnalyzer()
+    if not poem_text or not isinstance(poem_text, str):
+        raise ValueError("Invalid poem text")
     scores = analyzer.polarity_scores(poem_text)
-    
-    # Enhanced emotion detection with more nuanced categories
     compound = scores["compound"]
     positive = scores["pos"]
     negative = scores["neg"]
-    
-    # More sophisticated emotion mapping
     if compound >= 0.6:
-        # Very positive - could be joy or love
         if "love" in poem_text.lower() or "heart" in poem_text.lower() or "dear" in poem_text.lower():
             return "love"
         else:
             return "joy"
     elif compound >= 0.2:
-        # Mildly positive
         return "joy"
     elif compound <= -0.6:
-        # Very negative - could be sadness, anger, or fear
         if "angry" in poem_text.lower() or "rage" in poem_text.lower() or "mad" in poem_text.lower():
             return "anger"
         elif "scared" in poem_text.lower() or "afraid" in poem_text.lower() or "fear" in poem_text.lower():
@@ -32,32 +31,34 @@ def detect_emotion(poem_text):
         else:
             return "sadness"
     elif compound <= -0.2:
-        # Mildly negative
         return "sadness"
     else:
-        # Neutral
         return "neutral"
 
-def get_emotion_intensity(poem_text):
+def get_emotion_intensity(poem_text: str) -> float:
+    """Get the intensity of the detected emotion (0.0 to 1.0).
+    Useful for adjusting visual effects.
+    Args:
+        poem_text (str): Input poem text.
+    Returns:
+        float: Emotion intensity.
     """
-    Get the intensity of the detected emotion (0.0 to 1.0)
-    Useful for adjusting visual effects
-    """
-    analyzer = SentimentIntensityAnalyzer()
+    if not poem_text or not isinstance(poem_text, str):
+        raise ValueError("Invalid poem text")
     scores = analyzer.polarity_scores(poem_text)
     return abs(scores["compound"])
 
-def analyze_poem_mood(poem_text):
+def analyze_poem_mood(poem_text: str) -> dict:
+    """Comprehensive poem analysis returning emotion, intensity, and keywords.
+    Args:
+        poem_text (str): Input poem text.
+    Returns:
+        dict: Keys 'emotion', 'intensity', 'mood_keywords', 'raw_scores'.
     """
-    Comprehensive poem analysis returning emotion, intensity, and keywords
-    """
-    # Create analyzer once for this function
-    analyzer = SentimentIntensityAnalyzer()
-    
+    if not poem_text or not isinstance(poem_text, str):
+        raise ValueError("Invalid poem text")
     emotion = detect_emotion(poem_text)
     intensity = get_emotion_intensity(poem_text)
-    
-    # Additional mood indicators
     mood_keywords = {
         "joy": ["happy", "bright", "sun", "smile", "laugh", "dance", "celebration"],
         "love": ["love", "heart", "dear", "beloved", "kiss", "embrace", "romance"],
@@ -66,24 +67,21 @@ def analyze_poem_mood(poem_text):
         "fear": ["fear", "scared", "afraid", "dark", "shadow", "nightmare", "worry"],
         "neutral": []
     }
-    
-    found_keywords = []
-    poem_lower = poem_text.lower()
-    for keyword in mood_keywords.get(emotion, []):
-        if keyword in poem_lower:
-            found_keywords.append(keyword)
-    
+    found_keywords = [kw for kw in mood_keywords.get(emotion, []) if kw in poem_text.lower()]
     return {
         "emotion": emotion,
         "intensity": intensity,
         "mood_keywords": found_keywords,
-        "raw_scores": analyzer.polarity_scores(poem_text)  # ✅ Now analyzer is defined!
+        "raw_scores": analyzer.polarity_scores(poem_text)
     }
 
-def get_recommended_background_type(emotion):
-    """
-    Get recommended background type based on detected emotion
-    This integrates with the BackgroundManager system
+def get_recommended_background_type(emotion: str) -> str:
+    """Get recommended background type based on detected emotion.
+    This integrates with the BackgroundManager system.
+    Args:
+        emotion (str): Detected emotion.
+    Returns:
+        str: Recommended background type.
     """
     emotion_backgrounds = {
         "joy": ["sunset", "sky", "mountains"],
@@ -95,7 +93,6 @@ def get_recommended_background_type(emotion):
         "love": ["sunset", "sky", "ocean"],
         "neutral": ["sky", "forest", "ocean", "mountains"]
     }
-    
     import random
     recommended = emotion_backgrounds.get(emotion, ["sky", "forest", "ocean"])
     return random.choice(recommended)

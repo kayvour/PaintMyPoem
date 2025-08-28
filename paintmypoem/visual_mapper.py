@@ -1,85 +1,46 @@
 import random
 
-def get_palette(emotion):
-    """Enhanced color palettes with vibrant, saturated colors"""
+def get_palette(emotion: str) -> list[tuple[int, int, int]]:
+    """Enhanced color palettes with vibrant, saturated colors.
+    Args:
+        emotion (str): Detected emotion.
+    Returns:
+        list[tuple[int, int, int]]: Color palette.
+    """
     palettes = {
-        "joy": [
-            (255, 215, 0),      # Gold
-            (255, 165, 0),      # Orange  
-            (255, 69, 0),       # Red-Orange
-            (255, 20, 147),     # Deep Pink
-            (255, 105, 180),    # Hot Pink
-            (255, 255, 0),      # Bright Yellow
-            (255, 140, 0),      # Dark Orange
-            (255, 192, 203)     # Pink
-        ],
-        "sadness": [
-            (65, 105, 225),     # Royal Blue
-            (30, 144, 255),     # Dodger Blue
-            (0, 191, 255),      # Deep Sky Blue
-            (135, 206, 250),    # Light Sky Blue
-            (70, 130, 180),     # Steel Blue
-            (100, 149, 237),    # Cornflower Blue
-            (0, 206, 209),      # Dark Turquoise
-            (72, 209, 204)      # Medium Turquoise
-        ],
-        "anger": [
-            (255, 0, 0),        # Pure Red
-            (220, 20, 60),      # Crimson
-            (255, 69, 0),       # Red-Orange
-            (255, 140, 0),      # Dark Orange
-            (255, 165, 0),      # Orange
-            (178, 34, 34),      # Fire Brick
-            (139, 0, 0),        # Dark Red
-            (255, 99, 71)       # Tomato
-        ],
-        "fear": [
-            (138, 43, 226),     # Blue Violet
-            (147, 112, 219),    # Medium Purple
-            (186, 85, 211),     # Medium Orchid
-            (221, 160, 221),    # Plum
-            (218, 112, 214),    # Orchid
-            (199, 21, 133),     # Medium Violet Red
-            (148, 0, 211),      # Dark Violet
-            (139, 69, 19)       # Saddle Brown
-        ],
-        "love": [
-            (255, 20, 147),     # Deep Pink
-            (255, 105, 180),    # Hot Pink
-            (255, 182, 193),    # Light Pink
-            (255, 69, 0),       # Red-Orange
-            (255, 99, 71),      # Tomato
-            (255, 160, 122),    # Light Salmon
-            (255, 192, 203),    # Pink
-            (220, 20, 60)       # Crimson
-        ],
-        "neutral": [
-            (138, 43, 226),     # Blue Violet (instead of grey!)
-            (30, 144, 255),     # Dodger Blue
-            (255, 165, 0),      # Orange
-            (50, 205, 50),      # Lime Green
-            (255, 215, 0),      # Gold
-            (255, 20, 147),     # Deep Pink
-            (0, 255, 127),      # Spring Green
-            (255, 69, 0)        # Red-Orange
-        ]
+        "joy": [(255, 215, 0), (255, 165, 0), (255, 69, 0), (255, 20, 147), (255, 105, 180), (255, 255, 0), (255, 140, 0), (255, 192, 203)],
+        "sadness": [(65, 105, 225), (30, 144, 255), (0, 191, 255), (135, 206, 250), (70, 130, 180), (100, 149, 237), (0, 206, 209), (72, 209, 204)],
+        "anger": [(255, 0, 0), (220, 20, 60), (255, 69, 0), (255, 140, 0), (255, 165, 0), (178, 34, 34), (139, 0, 0), (255, 99, 71)],
+        "fear": [(138, 43, 226), (147, 112, 219), (186, 85, 211), (221, 160, 221), (218, 112, 214), (199, 21, 133), (148, 0, 211), (139, 69, 19)],
+        "love": [(255, 20, 147), (255, 105, 180), (255, 182, 193), (255, 69, 0), (255, 99, 71), (255, 160, 122), (255, 192, 203), (220, 20, 60)],
+        "neutral": [(138, 43, 226), (30, 144, 255), (255, 165, 0), (50, 205, 50), (255, 215, 0), (255, 20, 147), (0, 255, 127), (255, 69, 0)]
     }
     return palettes.get(emotion, palettes["neutral"])
 
-def get_vibrant_background(emotion):
-    """Enhanced backgrounds with more color and gradients"""
+def get_vibrant_background(emotion: str) -> tuple[int, int, int]:
+    """Enhanced backgrounds with more color and gradients.
+    Args:
+        emotion (str): Detected emotion.
+    Returns:
+        tuple[int, int, int]: Background color.
+    """
     backgrounds = {
-        "joy": (255, 248, 220),      # Cornsilk - warm cream
-        "sadness": (25, 25, 112),    # Midnight Blue
-        "anger": (139, 0, 0),        # Dark Red
-        "fear": (72, 61, 139),       # Dark Slate Blue
-        "love": (255, 240, 245),     # Lavender Blush
-        "neutral": (47, 79, 79)      # Dark Slate Gray (not pure grey)
+        "joy": (255, 248, 220),
+        "sadness": (25, 25, 112),
+        "anger": (139, 0, 0),
+        "fear": (72, 61, 139),
+        "love": (255, 240, 245),
+        "neutral": (47, 79, 79)
     }
     return backgrounds.get(emotion, (47, 79, 79))
 
-def get_accent_colors(emotion):
-    """Additional accent colors for more variety"""
+def get_accent_colors(emotion: str) -> list[tuple[int, int, int]]:
+    """Additional accent colors for more variety.
+    Args:
+        emotion (str): Detected emotion.
+    Returns:
+        list[tuple[int, int, int]]: Accent colors.
+    """
     accents = {
         "joy": [(255, 215, 0), (255, 140, 0), (255, 69, 0)],
         "sadness": [(0, 191, 255), (65, 105, 225), (30, 144, 255)],
@@ -90,56 +51,34 @@ def get_accent_colors(emotion):
     }
     return accents.get(emotion, accents["neutral"])
 
-def map_to_visuals(emotion, keywords):
+def map_to_visuals(emotion: str, keywords: list[str]) -> dict:
+    """Map emotion and keywords to visual elements.
+    Args:
+        emotion (str): Detected emotion.
+        keywords (list[str]): Extracted keywords.
+    Returns:
+        dict: Visual plan with elements, colors, and settings.
+    """
     palette = get_palette(emotion)
     accent_colors = get_accent_colors(emotion)
     background_color = get_vibrant_background(emotion)
-
-    # More varied shape options
     shape_options = ["circle", "square", "triangle", "hexagon", "star"]
     visuals = []
-
-    # Create more elements for richer visuals
-    num_elements = max(len(keywords) * 2, 8)  # At least 8 elements
-    
+    num_elements = max(len(keywords) * 2, 8)
     for i in range(num_elements):
         if i < len(keywords):
             word = keywords[i]
         else:
             word = f"element_{i}"
-            
         shape = random.choice(shape_options)
-        
-        # Better positioning to avoid clustering
         x = random.randint(80, 720)
-        y = random.randint(80, 600)  # Leave room for text at bottom
+        y = random.randint(80, 600)
         position = (x, y)
-        
-        # More size variation
         size = random.randint(25, 120)
-        
-        # Use vibrant colors from palette and accents
-        if random.random() < 0.7:  # 70% chance main palette
+        if random.random() < 0.7:
             color = random.choice(palette)
-        else:  # 30% chance accent colors
+        else:
             color = random.choice(accent_colors)
-
-        visuals.append({
-            "type": shape,
-            "position": position,
-            "size": size,
-            "color": color,
-            "label": word,
-            "alpha": random.randint(200, 255)  # Add transparency variation
-        })
-
-    return {
-        "background_color": background_color,
-        "elements": visuals,
-        "palette": palette,
-        "accent_colors": accent_colors,
-        "text": keywords,
-        "fog": False,  # Disable fog by default for more vibrant images
-        "emotion": emotion
-    }
+        visuals.append({"type": shape, "position": position, "size": size, "color": color, "label": word, "alpha": random.randint(200, 255)})
+    return {"background_color": background_color, "elements": visuals, "palette": palette, "accent_colors": accent_colors, "text": keywords, "fog": False, "emotion": emotion}
     
