@@ -3,6 +3,36 @@ _All notable changes will be documented here following the [Keep a Changelog](ht
 
 ---
 
+## [0.4.0] – 2025-08-28
+
+### Added
+- **Logging System** - Added file-based logging in `main.py` to track execution details and errors.
+- **Type Hints** - Implemented type annotations across all modules for better code clarity and IDE support.
+- **Input Validation** - Added comprehensive checks for user inputs and function parameters in all files.
+- **Resource Cleanup** - Introduced `tempfile.NamedTemporaryFile` for automatic cleanup of temporary files in `image_renderer.py`.
+- **Retry Logic** - Added 3-attempt retry mechanism for background downloads in `background_manager.py`.
+- **Pygame Context Manager** - Added `with` statement for Pygame initialization and cleanup in `art_generator.py` and `main.py`.
+
+### Changed
+- **Art Generation Pipeline** - Refactored Pygame initialization to a helper function `initialize_pygame` in `main.py`.
+- **Background Management** - Enhanced `prepare_background_surface` with context manager for PIL image handling in `background_manager.py`.
+- **Error Handling** - Improved exception handling with specific error messages and fallbacks across all modules.
+- **Style Application** - Updated `apply_style_to_palette` in `styles.py` to include bounds checking for color values.
+- **Input Workflow** - Enhanced `main.py` input validation for background selection with a retry loop.
+
+### Fixed
+- **Resource Leaks** - Resolved potential memory leaks from repeated Pygame initialization in `art_generator.py`.
+- **Permission Issues** - Added handling for directory permission errors in `background_manager.py` cleanup.
+- **Input Errors** - Fixed invalid input handling in `main.py` to ensure valid background choices.
+- **Image Processing** - Ensured robust surface validation and fallback in `image_renderer.py`.
+
+### Enhanced
+- **Code Maintainability** - Expanded docstrings with detailed parameter and return descriptions in all files.
+- **Robustness** - Improved stability with better error recovery and logging for debugging.
+- **Flexibility** - Added configurable size parameter to `draw_art` in `art_generator.py`.
+
+---
+
 ## [0.3.0] – 2025-08-03
 
 ### Added
