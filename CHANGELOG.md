@@ -3,6 +3,21 @@ _All notable changes will be documented here following the [Keep a Changelog](ht
 
 ---
 
+## [0.5.0] – 2026-05-25
+
+### Added
+- **Dockerfile** - Multi-stage build using `python:3.11-slim` with separate builder and runtime stages for a lean final image (~400–500 MB).
+- **`.dockerignore`** - Excludes build artifacts, caches, generated images, and secrets from the Docker build context.
+- **Headless Pygame Support** - Configured `SDL_VIDEODRIVER=dummy` and `SDL_AUDIODRIVER=dummy` for running without a display.
+- **NLTK Data at Build Time** - Downloads `punkt`, `vader_lexicon`, `averaged_perceptron_tagger`, and `stopwords` during image build so the container works offline.
+
+### Changed
+- **Dependency Separation** - Split system libraries into build-time (`libsdl2-dev`, `gcc`) and runtime-only (`libsdl2-2.0-0`) to reduce final image size.
+
+### Notes
+- Run with `-it` flags as the app reads poem input from stdin.
+- Use `docker cp` or a volume mount (`-v`) to retrieve generated artwork from the container.
+
 ## [0.4.0] – 2025-08-28
 
 ### Added
@@ -36,7 +51,7 @@ _All notable changes will be documented here following the [Keep a Changelog](ht
 ## [0.3.0] – 2025-08-03
 
 ### Added
-- **🎨 Style Presets System** - Complete artistic style management with 5 predefined styles
+- **Style Presets System** - Complete artistic style management with 5 predefined styles
 - **Vibrant Style** - Bold colors, high contrast, energetic feel with increased element count
 - **Minimalist Style** - Clean, simple shapes with limited color palette and reduced visual noise
 - **Ethereal Style** - Soft, dreamy aesthetic with transparent layers and flowing particles
